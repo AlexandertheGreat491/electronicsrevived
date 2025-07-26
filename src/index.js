@@ -65,6 +65,26 @@ async () => { if (username.trim())
 // body: JSON.stringify({ username }), }); if (response.ok)
 //  { onLogin(username); navigate("/"); } } };
 
+return ( <div className="p-4 max-w-sm mx-auto">
+<h1 className="text-2xl font-bold mb-4">Sign Up</h1>
+<Input placeholder="Choose a username" value={username} onChange={(e) => setUsername(e.target.value)} className="mb-4" />
+<Button onClick={handleSignup}>Sign Up</Button> </div> ); }
+
+function App() { const [cart, setCart] = useState(() => { const saved = localStorage.getItem("cart"); 
+return saved ? JSON.parse(saved) : []; }); 
+const [user, setUser] = useState(() => { return localStorage.getItem("user") || null; });
+
+useEffect(() => { localStorage.setItem("cart", JSON.stringify(cart)); }, [cart]);
+
+useEffect(() => { if (user) localStorage.setItem("user", user); }, [user]);
+
+const addToCart = (product) => setCart([...cart, product]); const handleLogin = (username) => setUser(username);
+
+return ( <Router> <nav className="bg-gray-100 p-4 flex justify-between"> <div className="space-x-4"> <Link to="/" className="font-bold">Home</Link> <Link to="/cart">Cart ({cart.length})</Link> </div> <div> {user ? <span>Welcome, {user}</span> : ( <> <Link to="/login" className="mr-2">Login</Link> <Link to="/signup">Sign Up</Link> </> )} </div> </nav> <Routes> <Route path="/" element={<HomePage addToCart={addToCart} />} /> <Route path="/cart" element={<CartPage cart={cart} />} /> <Route path="/login" element={<LoginPage onLogin={handleLogin} />} /> <Route path="/signup" element={<SignupPage onLogin={handleLogin} />} /> </Routes> </Router> ); }
+
+export default App;
+
+
 
 
 
