@@ -14,3 +14,9 @@ const products = [ { id: 1, name: "iPhone 13 Pro", condition: "Like New", price:
 
 function HomePage({ addToCart }) { const [search, setSearch] = useState("");
 
+const filteredProducts = 
+products.filter((product) => product.name.toLowerCase().includes(search.toLowerCase()) );
+
+
+
+
