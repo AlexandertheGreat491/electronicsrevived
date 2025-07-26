@@ -43,6 +43,14 @@ return ( <div className="p-4 max-w-2xl mx-auto">
 </div> </CardContent> </Card> ))} <div className="text-xl font-bold">Total: ${total}</div>
 </div> )} </div> ); }
 
+function LoginPage({ onLogin })
+{ const [username, setUsername] = useState(""); const navigate = useNavigate(); const handleLogin = async () => { if (username.trim()) 
+{ // Simulated backend login const response = await fetch("/api/login",
+//  { method: "POST", headers: { "Content-Type": "application/json" }, 
+// body: JSON.stringify({ username }), }); if (response.ok)
+//  { onLogin(username); navigate("/"); } } };
+
+
 
 
 
