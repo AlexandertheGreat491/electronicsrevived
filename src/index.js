@@ -50,6 +50,11 @@ function LoginPage({ onLogin })
 // body: JSON.stringify({ username }), }); if (response.ok)
 //  { onLogin(username); navigate("/"); } } };
 
+return ( <div className="p-4 max-w-sm mx-auto"> 
+<h1 className="text-2xl font-bold mb-4">Login</h1>
+<Input placeholder="Enter username" value={username} onChange={(e) => setUsername(e.target.value)} 
+className="mb-4" /> 
+<Button onClick={handleLogin}>Login</Button> </div> ); }
 
 
 
