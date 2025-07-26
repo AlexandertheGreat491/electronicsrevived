@@ -56,6 +56,16 @@ return ( <div className="p-4 max-w-sm mx-auto">
 className="mb-4" /> 
 <Button onClick={handleLogin}>Login</Button> </div> ); }
 
+function SignupPage({ onLogin })
+{ const [username, setUsername] = useState("");
+const navigate = useNavigate(); const handleSignup = 
+async () => { if (username.trim()) 
+{ // Simulated backend signup const response = await fetch("/api/signup",
+//  { method: "POST", headers: { "Content-Type": "application/json" }, 
+// body: JSON.stringify({ username }), }); if (response.ok)
+//  { onLogin(username); navigate("/"); } } };
+
+
 
 
 
